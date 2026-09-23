@@ -9,7 +9,7 @@ from ranking.infer import recommend
 ROOT = Path(__file__).resolve().parents[1]
 
 
-@pytest.mark.parametrize("filename", ["site/sandbox.json", "artifacts/full/private-bundle.json"])
+@pytest.mark.parametrize("filename", ["site/sandbox.json", os.environ.get("PRIVATE_BUNDLE", "artifacts/full/private-bundle.json")])
 def test_python_matches_actual_js_export(filename):
     path = ROOT / filename
     if not path.exists():

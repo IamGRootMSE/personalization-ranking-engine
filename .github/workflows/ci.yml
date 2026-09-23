@@ -9,6 +9,7 @@ jobs:
       PYTHONPATH: src
       OPENBLAS_NUM_THREADS: '1'
       OMP_NUM_THREADS: '1'
+      PRIVATE_BUNDLE: artifacts/smoke/private-bundle.json
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -18,10 +19,10 @@ jobs:
         with:
           node-version: '22'
       - run: pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
-      - run: python -m pytest -q
-      - run: node --test tests/scorer.test.mjs
       - name: Real-data smoke train and evaluate
         run: python -m ranking.run --config configs/smoke.json --output reports/smoke --artifacts artifacts/smoke
+      - run: python -m pytest -q
+      - run: node --test tests/scorer.test.mjs
       - run: python scripts/build_site.py
       - uses: actions/upload-artifact@v4
         with:

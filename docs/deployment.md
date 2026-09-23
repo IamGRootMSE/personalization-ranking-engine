@@ -4,7 +4,16 @@ Repository: https://github.com/IamGRootMSE/personalization-ranking-engine
 
 Project branch: `project/personalization-ranking-engine`.
 
-The repository was empty at initial inspection. The project is committed locally and the delivery process attempts a normal non-force push to that branch. See the final delivery message for the verified remote outcome and commit.
+The repository was empty at initial inspection. The project is committed locally. Publication was attempted on 2026-09-23 and is **blocked**; no remote project branch or live site was verified.
+
+Two available routes were checked:
+
+- Command-line Git had no usable GitHub credentials. A noninteractive push reported `fatal: could not read Username for 'https://github.com': terminal prompts disabled` after the configured credential manager failed to provide authentication.
+- The connected GitHub integration could read repository metadata, but its repository initialization write returned HTTP 403: `Resource not accessible by integration`. The failed request did not create a file or remote commit. Repository metadata indicating account-level push permission did not establish the integration's actual write scope.
+
+To finish, sign in with a Git credential manager that has permission to push repository contents **and workflow files**, then run the push command below from this local checkout. Alternatively reconnect the GitHub integration with access to this repository and the required contents/workflow permissions. Credentials must not be pasted into source files or committed. GitHub CI could not execute because the branch was not published; the corresponding local tests, smoke training, and site build passed.
+
+The delivered environment's bundled Git required a local `http.sslBackend=openssl` setting and `GIT_EXEC_PATH` pointing to its `mingw64/bin` folder to locate HTTPS helpers. These environment repairs are not tracked repository configuration, do not disable TLS verification, and are normally unnecessary with a standard Git installation.
 
 ## GitHub Pages setup
 
