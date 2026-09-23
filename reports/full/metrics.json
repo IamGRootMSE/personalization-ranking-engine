@@ -1,0 +1,240 @@
+{
+  "dataset": {
+    "dataset": "MovieLens 100K",
+    "release": "1998-04",
+    "url": "https://files.grouplens.org/datasets/movielens/ml-100k.zip",
+    "md5": "0e33842e24a9c977be4e0107933c0723",
+    "sha256": "50d2a982c66986937beb9ffb3aa76efe955bf3d5c6b761f4e3a7cd717c6a3229",
+    "retrieved_utc": "2026-09-23T05:44:04.089081+00:00",
+    "terms": "https://files.grouplens.org/datasets/movielens/ml-100k-README.txt",
+    "redistribution": "Separate permission required; raw data and derived model bundles excluded from publication."
+  },
+  "protocol": {
+    "k": 10,
+    "train_end_exclusive": "1998-02-01T00:00:00+00:00",
+    "validation_end_exclusive": "1998-03-15T00:00:00+00:00",
+    "positive_rating_min": 4,
+    "candidate_policy": "all train-observed movies, minus all prior ratings; fixed train-only model",
+    "train_rows": 66994,
+    "validation_rows": 15079,
+    "test_rows": 17927,
+    "train_users": 647,
+    "eligible_catalog": 1566,
+    "total_catalog": 1682,
+    "validation_exclusions": {
+      "users_with_positive_ratings": 216,
+      "evaluated_users": 215,
+      "users_without_eligible_targets": 1,
+      "positive_targets_for_unseen_items": 84,
+      "already_consumed_positive_targets": 0
+    },
+    "test_exclusions": {
+      "users_with_positive_ratings": 257,
+      "evaluated_users": 250,
+      "users_without_eligible_targets": 7,
+      "positive_targets_for_unseen_items": 232,
+      "already_consumed_positive_targets": 0
+    }
+  },
+  "models": {
+    "popularity": {
+      "recall": 0.08005582029657987,
+      "ndcg": 0.27423187487946865,
+      "coverage": 0.04661558109833972,
+      "users": 250,
+      "by_history": {
+        "0": {
+          "users": 184,
+          "recall": 0.08145705262601252,
+          "ndcg": 0.3217727644665175
+        },
+        "1–19": {
+          "users": 2,
+          "recall": 0.11764705882352941,
+          "ndcg": 0.23898357018128644
+        },
+        "20–99": {
+          "users": 22,
+          "recall": 0.08683202218360608,
+          "ndcg": 0.2008291022723448
+        },
+        "100+": {
+          "users": 42,
+          "recall": 0.06857759012553018,
+          "ndcg": 0.10608506351604252
+        }
+      }
+    },
+    "item_cf": {
+      "recall": 0.08136628159363732,
+      "ndcg": 0.2803064393064335,
+      "coverage": 0.08301404853128991,
+      "users": 250,
+      "by_history": {
+        "0": {
+          "users": 184,
+          "recall": 0.08145705262601252,
+          "ndcg": 0.3217727644665175
+        },
+        "1–19": {
+          "users": 2,
+          "recall": 0.2676470588235294,
+          "ndcg": 0.4155554583981911
+        },
+        "20–99": {
+          "users": 22,
+          "recall": 0.13051200921324693,
+          "ndcg": 0.25609007479201285
+        },
+        "100+": {
+          "users": 42,
+          "recall": 0.04635510464010794,
+          "ndcg": 0.1048887762511549
+        }
+      }
+    },
+    "bpr": {
+      "recall": 0.07781405097022003,
+      "ndcg": 0.2724881633084337,
+      "coverage": 0.14495530012771393,
+      "users": 250,
+      "by_history": {
+        "0": {
+          "users": 184,
+          "recall": 0.08145705262601252,
+          "ndcg": 0.3217727644665175
+        },
+        "1–19": {
+          "users": 2,
+          "recall": 0.21764705882352942,
+          "ndcg": 0.33320564624514415
+        },
+        "20–99": {
+          "users": 22,
+          "recall": 0.0983610318612671,
+          "ndcg": 0.1931727237421004
+        },
+        "100+": {
+          "users": 42,
+          "recall": 0.044432815256518245,
+          "ndcg": 0.09522954643935021
+        }
+      }
+    },
+    "favorite_fold_in": {
+      "recall": 0.07438853654700123,
+      "ndcg": 0.26568489730845907,
+      "coverage": 0.1545338441890166,
+      "users": 250,
+      "by_history": {
+        "0": {
+          "users": 184,
+          "recall": 0.08145705262601252,
+          "ndcg": 0.3217727644665175
+        },
+        "1–19": {
+          "users": 2,
+          "recall": 0.2676470588235294,
+          "ndcg": 0.363664922155261
+        },
+        "20–99": {
+          "users": 22,
+          "recall": 0.09466405192735666,
+          "ndcg": 0.1533512380751544
+        },
+        "100+": {
+          "users": 42,
+          "recall": 0.02359840936940707,
+          "ndcg": 0.07414234722170532
+        }
+      }
+    }
+  },
+  "paired_bootstrap_95_ci": {
+    "item_cf_minus_popularity": {
+      "recall": {
+        "delta": 0.001310461297057459,
+        "low": -0.008206818992730855,
+        "high": 0.010702858703347034
+      },
+      "ndcg": {
+        "delta": 0.006074564426964905,
+        "low": -0.0016389011191440621,
+        "high": 0.014627338802586062
+      }
+    },
+    "bpr_minus_popularity": {
+      "recall": {
+        "delta": -0.0022417693263598343,
+        "low": -0.010316806844609146,
+        "high": 0.005895741934130651
+      },
+      "ndcg": {
+        "delta": -0.0017437115710349563,
+        "low": -0.009461136366309183,
+        "high": 0.006053140027469978
+      }
+    },
+    "bpr_minus_item_cf": {
+      "recall": {
+        "delta": -0.003552230623417295,
+        "low": -0.010158677250919968,
+        "high": 0.002285753226247381
+      },
+      "ndcg": {
+        "delta": -0.007818275997999861,
+        "low": -0.015447010829579335,
+        "high": -0.0009152114211459158
+      }
+    },
+    "favorite_fold_in_minus_popularity": {
+      "recall": {
+        "delta": -0.0056672837495786305,
+        "low": -0.014861167591701764,
+        "high": 0.0035805720022426234
+      },
+      "ndcg": {
+        "delta": -0.00854697757100961,
+        "low": -0.018044788834962015,
+        "high": -0.00031151345568339013
+      }
+    }
+  },
+  "latency": {
+    "popularity": {
+      "median_ms": 0.0455,
+      "p95_ms": 0.08990999999999999
+    },
+    "item_cf": {
+      "median_ms": 0.16935,
+      "p95_ms": 0.239995
+    },
+    "bpr": {
+      "median_ms": 0.0639,
+      "p95_ms": 0.08982000000000001
+    },
+    "favorite_fold_in": {
+      "median_ms": 0.2286,
+      "p95_ms": 0.28722000000000003
+    }
+  },
+  "timing_conditions": {
+    "batch_size": 1,
+    "warmups": 20,
+    "repetitions": 300,
+    "population": "warm eligible test users cycled",
+    "includes": "scoring + filtering + stable sort",
+    "excludes": "disk, startup, network, browser rendering"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+    "logical_cpu_count": 16,
+    "torch_threads": 1,
+    "python": "3.12.14",
+    "torch": "2.8.0+cpu",
+    "numpy": "2.2.6"
+  },
+  "elapsed_seconds": 8.500769699923694,
+  "private_bundle_sha256": "f566e641ac6e9bdfcd78e41040362d2854303fa5723556d10c36dc099e493d17"
+}

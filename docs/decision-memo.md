@@ -1,0 +1,17 @@
+# Decision memo: a useful benchmark, not a launch claim
+
+**Decision:** keep popularity as the operational reference. Do not claim that this experiment proves personalized ranking improves engagement or even offline ranking over popularity. Preserve BPR as the validation-selected candidate for further prospective evaluation; do not retrospectively choose a winner using test results.
+
+**Evidence:** BPR led validation (NDCG .26921); item CF led test (.28031). CF's test difference from popularity is +.00607, with a 95% paired interval of [−.00164,+.01463]. BPR's difference is −.00174 [−.00946,+.00605]. BPR reaches 14.50% of the train-observed catalog versus 4.66% for popularity, but more coverage without better relevance is not sufficient. BPR's 0.0898 ms p95 is a CPU scoring microbenchmark, not a production latency guarantee.
+
+**Tradeoffs:** item CF is interpretable (recommend items co-liked with training positives) and useful as a debugging reference, but its dense similarity matrix scales quadratically in item count. BPR has compact item vectors, O(items × dimensions) query scoring and sparse-parameter training, but greater optimization and cold-start complexity. The browser's mean-vector profile is easy to inspect, yet its proxy NDCG is below popularity. Maintaining a fallback is a product requirement, not an afterthought.
+
+**Most consequential uncertainty:** 73.6% of evaluated users were unseen at training. All three models then make identical popularity recommendations. The warm cohorts contain only 66 users, including just two with 1–19 ratings. A single temporal snapshot cannot determine sustained value for returning users, new users, or a changing catalog.
+
+**Rights decision:** publish code and aggregate evidence. Keep MovieLens data, metadata, and derived weights local. The public demo uses an original fictional sandbox; real MovieLens inference requires a local bundle. This adds setup friction but avoids presuming publication rights that the terms do not grant.
+
+**Proposed online experiment, not executed:** after acquiring suitable product data rights, compare popularity with a prospectively selected personalized candidate. Randomize users 50/50 on their first eligible recommendation request and keep assignment sticky. Count all assigned users in the intention-to-treat denominator; log whether the surface rendered. Primary outcome: number of qualified plays (≥10 minutes) per randomized eligible user over 14 days. Report the exposed-user ratio as a secondary diagnostic; do not condition the primary outcome on a post-randomization rendering event.
+
+Proposed guardrails: serving p95 below 100 ms, no more than a 0.1 percentage-point absolute increase in errors or dismissals, zero repeat-consumed recommendations, and no material increase in exposure concentration. These are design proposals requiring business validation, not measured thresholds. Monitor catalog reach and new-item exposure separately. Estimate baseline variance from a prospective instrumentation pilot, choose an MDE and sample size before launch, and use one pre-registered two-sided analysis at the planned horizon. Do not peek and stop when significant. Ramp gradually only after instrumentation and safety checks pass.
+
+**Next research:** pre-register new temporal windows and multiple seeds, estimate warm-user uncertainty, consider refreshed histories and metadata-based new-item retrieval, and evaluate short-favorite onboarding separately. Do not recycle this test set for tuning those choices.

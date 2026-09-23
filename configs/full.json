@@ -1,0 +1,16 @@
+{
+  "seed": 42,
+  "train_end": "1998-02-01T00:00:00+00:00",
+  "validation_end": "1998-03-15T00:00:00+00:00",
+  "positive_rating": 4,
+  "k": 10,
+  "threads": 1,
+  "cf_shrinkages": [0, 20, 100],
+  "bpr_dimensions": [16, 32],
+  "bpr_epochs": [10, 30, 60],
+  "learning_rate": 0.01,
+  "regularization": 0.0001,
+  "batch_size": 2048,
+  "bootstrap_samples": 2000,
+  "latency_repeats": 300
+}

@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "users": 250,
+  "models": {
+    "popularity": {
+      "recall": 0.08005582029657984,
+      "ndcg": 0.27423187487946854,
+      "coverage": 0.04661558109833972
+    },
+    "item_cf": {
+      "recall": 0.08136628159363728,
+      "ndcg": 0.28030643930643345,
+      "coverage": 0.08301404853128991
+    },
+    "bpr": {
+      "recall": 0.07781405097022001,
+      "ndcg": 0.2724881633084335,
+      "coverage": 0.14495530012771393
+    },
+    "favorite_fold_in": {
+      "recall": 0.07438853654700121,
+      "ndcg": 0.26568489730845896,
+      "coverage": 0.1545338441890166
+    }
+  },
+  "tolerance": 1e-12,
+  "method": "Independent Python sorting and scalar DCG sums; no production evaluation helpers"
+}

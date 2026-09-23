@@ -1,0 +1,7 @@
+{
+  "name": "personalization-ranking-engine-site",
+  "private": true,
+  "type": "module",
+  "scripts": {"test": "node --test tests/scorer.test.mjs"},
+  "engines": {"node": ">=22"}
+}
